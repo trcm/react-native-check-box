@@ -45,6 +45,13 @@ export default class CheckBox extends Component {
         rightTextStyle: {}
     }
 
+  componentWillReceiveProps(props) {
+    console.log('got props check box', props.isChecked);
+    this.setState({
+      isChecked: props.isChecked,
+    });
+  }
+  
     _renderLeft() {
         if (this.props.leftTextView)return this.props.leftTextView;
         if (!this.props.leftText)return null;
@@ -77,9 +84,6 @@ export default class CheckBox extends Component {
     }
 
     onClick() {
-        this.setState({
-            isChecked: !this.state.isChecked
-        })
         this.props.onClick();
     }
 
